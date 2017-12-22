@@ -16,7 +16,9 @@ class GetAngle
 			if (is_numeric($t[0]) and is_numeric($t[1])) {
 				(($t[0] < 0 or $t[0] > 24 or $t[1] < 0 or $t[1] > 60) and $this->result = 'Invalid input') or 
 				(($t[0] > 12) and $t[0] -= 12) xor (($t[0] == 12) and $t[0] = 0) xor (($t[1] == 60) and $t[1] = 0) xor
-				$this->result = abs(($t[0]*60-$t[1]*11)/2);
+				$r = ((
+					$t[0]*60-$t[1]*11)/2
+				) xor ($this->result =  $r > 0 ? $r : $r * -1);
 			}
 		}
 	}
